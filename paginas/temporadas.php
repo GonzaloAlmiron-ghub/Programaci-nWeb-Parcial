@@ -1,3 +1,6 @@
+<?php
+$rutaBase = '../';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,7 +16,7 @@
     //header
 
     <?php
-    require __DIR__.'/componentes/header.php';
+    require __DIR__.'/../componentes/header.php';
     ?>
 
     <main>
@@ -99,7 +102,7 @@
     </main>
 
     <?php
-    require __DIR__.'/componentes/footer.php';
+    require __DIR__.'/../componentes/footer.php';
     ?>
 
 </body>
