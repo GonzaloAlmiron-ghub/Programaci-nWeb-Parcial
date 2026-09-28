@@ -10,23 +10,12 @@
 </head>
 <body>
 
-    <header class="encabezado">
-        <h1>
-            <span class="marca-ozark">Ozark</span>
-            <span class="nombre-sitio">familia, crimen y poder</span>
-        </h1>
+    //header
 
-        <nav class="navegacion">
-            <ul>
-                <li><a href="../index.php">Inicio</a></li>
-                <li><a href="info.php">Sobre la serie</a></li>
-                <li><a href="reparto.php">Reparto</a></li>
-                <li><a href="temporadas.php">Temporadas</a></li>
-                <li><a href="curiosidades.php">Curiosidades</a></li>
-                <li><a href="contacto.php">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php 
+    require __DIR__ . '/../componentes/header.php'; 
+    ?>
+
 
     <main>
         <section class="presentacion">
@@ -111,9 +100,9 @@
         </aside>
     </main>
 
-    <footer>
-        <p>Sitio web creado por Gonzalo Almirón - Programación Web I - Escuela Da Vinci</p>
-    </footer>
+    <?php
+    require __DIR__.'/..componentes/footer.php';
+    ?>
 
 </body>
 </html>
