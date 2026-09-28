@@ -18,12 +18,12 @@
 
         <nav class="navegacion">
             <ul>
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="info.html">Sobre la serie</a></li>
-                <li><a href="reparto.html">Reparto</a></li>
-                <li><a href="temporadas.html">Temporadas</a></li>
-                <li><a href="curiosidades.html">Curiosidades</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="../index.php">Inicio</a></li>
+                <li><a href="info.php">Sobre la serie</a></li>
+                <li><a href="reparto.php">Reparto</a></li>
+                <li><a href="temporadas.php">Temporadas</a></li>
+                <li><a href="curiosidades.php">Curiosidades</a></li>
+                <li><a href="contacto.php">Contacto</a></li>
             </ul>
         </nav>
     </header>

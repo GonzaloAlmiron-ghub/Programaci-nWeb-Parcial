@@ -18,12 +18,12 @@
 
         <nav class="navegacion">
             <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="paginas/info.html">Sobre la serie</a></li>
-                <li><a href="paginas/reparto.html">Reparto</a></li>
-                <li><a href="paginas/temporadas.html">Temporadas</a></li>
-                <li><a href="paginas/curiosidades.html">Curiosidades</a></li>
-                <li><a href="paginas/contacto.html">Contacto</a></li>
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="paginas/info.php">Sobre la serie</a></li>
+                <li><a href="paginas/reparto.php">Reparto</a></li>
+                <li><a href="paginas/temporadas.php">Temporadas</a></li>
+                <li><a href="paginas/curiosidades.php">Curiosidades</a></li>
+                <li><a href="paginas/contacto.php">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -38,7 +38,7 @@
                 </p>
 
                 <p>
-                    <a href="index.html">Volver al inicio</a>
+                    <a href="index.php">Volver al inicio</a>
                 </p>
             </article>
         </section>
