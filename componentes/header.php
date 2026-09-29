@@ -4,9 +4,10 @@
             <span class="nombre-sitio">familia, crimen y poder</span>
         </h1>
 
-        //reutilizo el nav
-
+        
         <?php 
+        //reutilizo el nav
         require __DIR__ . '/navegacion.php'; 
+        
         ?>
-    </header>
+</header>
