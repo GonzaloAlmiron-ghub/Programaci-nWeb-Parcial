@@ -1,5 +1,7 @@
 <?php
+
 $rutaBase = '../';
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -33,7 +35,7 @@ $rutaBase = '../';
             <article class="tarjeta">
                 <h2>Formulario de contacto</h2>
 
-                <form action="../confirmacion.php" method="get">
+                <form action="../confirmacion.php" method="post">
                     <div>
                         <label for="nombre">Nombre</label>
                         <input
@@ -64,6 +66,16 @@ $rutaBase = '../';
                     </div>
 
                     <div>
+                        <label for="motivo">Motivo de contacto</label>
+                        <select id="motivo" name="motivo" required>
+                            <option value="">Seleccioná un motivo</option>
+                            <option value="consulta">Consulta sobre la serie</option>
+                            <option value="sugerencia">Sugerencia para el sitio</option>
+                            <option value="error">Informar un error del sitio</option>
+                        </select>
+                    </div>
+
+                    <div>
                         <label for="mensaje">Mensaje</label>
                         <textarea
                             id="mensaje"
@@ -79,7 +91,6 @@ $rutaBase = '../';
         </section>
     </main>
 
-    //footer
     <?php 
     require __DIR__ . '/../componentes/footer.php'; 
     ?>
