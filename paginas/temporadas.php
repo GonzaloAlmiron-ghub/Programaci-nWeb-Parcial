@@ -13,7 +13,6 @@ $rutaBase = '../';
 </head>
 <body>
 
-    //header
 
     <?php
     require __DIR__.'/../componentes/header.php';

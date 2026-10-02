@@ -5,6 +5,9 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
     background: #06110f;
     color: #d9e2dd;
@@ -26,6 +29,7 @@ a:hover {
 }
 
 main {
+    flex: auto;
     width: 90%;
     max-width: 1180px;
     margin: 35px auto;
@@ -169,15 +173,9 @@ figcaption {
     gap: 22px;
 }
 
-.tarjeta-clave {
-    border-top: 4px solid #a0864e;
-}
-
-.tarjeta-clave:hover {
-    border-top-color: #e6a422;
-}
-
 .tarjeta {
+    min-width: 0;
+    overflow-wrap: anywhere;
     background-color: #0d2320;
     border: 1px solid #244f45;
     border-radius: 8px;
@@ -187,6 +185,14 @@ figcaption {
 
 .tarjeta:hover {
     background-color: #12312c;
+}
+
+.tarjeta-clave {
+    border-top: 4px solid #a0864e;
+}
+
+.tarjeta-clave:hover {
+    border-top-color: #e6a422;
 }
 
 .bloques-inicio {
@@ -238,9 +244,7 @@ iframe,
     border-radius: 6px;
 }
 
-/* ==============================
-   REPARTO
-   ============================== */
+/* Reparto */
 
 .reparto {
     background-color: #091816;
@@ -287,9 +291,7 @@ iframe,
 }
 
 
-/* ==============================
-   FORMULARIO
-   ============================== */
+/* Formulario */
 
 form {
     display: grid;
@@ -337,9 +339,7 @@ button:hover {
     background-color: #2c6658;
 }
 
-/* ==============================
-   FOOTER
-   ============================== */
+/* Footer */
 
 footer {
     background-color: #071816;
@@ -354,9 +354,7 @@ footer p {
     margin-bottom: 0;
 }
 
-/* ==============================
-   RESPONSIVE
-   ============================== */
+/* Responsive */
 
 @media (max-width: 768px) {
     main {

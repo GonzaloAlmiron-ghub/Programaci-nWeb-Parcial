@@ -6,7 +6,7 @@ $rutaBase = '../';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ozark : Información</title>
+    <title>Información - Ozark</title>
 
     <link rel="icon" href="../img/logo-ozark.jpg">
     <link rel="stylesheet" href="../css/estilos.css">

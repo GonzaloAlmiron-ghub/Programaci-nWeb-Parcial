@@ -12,7 +12,6 @@ $rutaBase = '';
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-//header + nav
     <?php 
     require __DIR__ . '/componentes/header.php'; 
     ?>
@@ -116,11 +115,10 @@ $rutaBase = '';
             <h2>La trama</h2>
 
             <p>
-                Nos equivocamos si pensamos que la historia de Ozark se centra únicamente en lavado de dinero. Dentro de ella ocurren secuencias entre las relaciones, lo cual le da mucha emoción a la trama.
+                Ozark también muestra cómo el lavado de dinero afecta las relaciones familiares. Las decisiones de Marty y Wendy cambian la vida de sus hijos y de quienes los rodean.
             </p>
         </aside>
     </main>
-//footer
     <?php
     require __DIR__.'/componentes/footer.php';
     ?>

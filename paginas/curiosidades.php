@@ -13,7 +13,6 @@ $rutaBase = '../';
 </head>
 <body>
 
-    //header
 
     <?php 
     require __DIR__ . '/../componentes/header.php'; 
@@ -35,8 +34,8 @@ $rutaBase = '../';
             </article>
 
             <figure class="imagen-principal">
-                <img src="../img/curiosidades.jpg" alt="Marty Byrde esposado en una escena de Ozark">
-                <figcaption>Una "O",se muestra una por episodio. Dentro de ellas hay objetos que hacen referencia a cuestiones de la trama. </figcaption>
+                <img src="../img/curiosidades.jpg" alt="Una O dividida en cuatro partes con símbolos de la serie Ozark">
+                <figcaption>Cada episodio presenta una "O" con símbolos relacionados con su trama.</figcaption>
             </figure>
         </section>
 
