@@ -2,9 +2,26 @@
 
 $rutaBase = '../';
 
+require __DIR__ . '/../conexion.php';
 
-require __DIR__.'/../datos/personajes.php';
+$sql = 'SELECT id, nombre, actor, imagen, alt, grupo, destacado, descripcion
+        FROM personajes ORDER BY id';
 
+$resultado = mysqli_query($conexion, $sql);
+
+if (!$resultado) {
+    die('No se pudieron consultar los personajes.');
+}
+
+$personajesBD = array();
+
+$personaje = mysqli_fetch_assoc($resultado);
+
+while ($personaje != null) {
+    $personajesBD[] = $personaje;
+
+    $personaje = mysqli_fetch_assoc($resultado);
+}
 $grupos = array(
     'byrde' => 'Los Byrde',
     'otros' => 'Más personajes'
@@ -56,24 +73,31 @@ $grupos = array(
                 <h2><?php echo $nombreGrupo; ?></h2>
 
                 <div class="foto-personaje">
-                    <?php foreach ($personajes as $personaje) { ?>
+                    <?php foreach ($personajesBD as $personaje) { ?>
                         <?php if ($personaje['grupo'] == $grupo) { ?>
                             <article class="personaje">
                                 <figure>
-                                    <img src="<?php echo $personaje['imagen']; ?>" alt="<?php echo $personaje['alt']; ?>">
-                                    <figcaption><?php echo $personaje['actor']; ?></figcaption>
+                                    <img src="<?php echo htmlspecialchars($personaje['imagen']); ?>" alt="<?php echo htmlspecialchars($personaje['alt']); ?>">
+                                    <figcaption><?php echo htmlspecialchars($personaje['actor']); ?></figcaption>
                                 </figure>
 
                                 <div class="contenido-personaje">
-                                    <h3><?php echo $personaje['nombre']; ?></h3>
+                                    <h3><?php echo htmlspecialchars($personaje['nombre']); ?></h3>
 
                                     <?php if ($personaje['destacado']) { ?>
                                         <p class="texto-importante">Personaje destacado</p>
                                     <?php } ?>
 
-                                    <?php foreach ($personaje['descripcion'] as $parrafo) { ?>
-                                        <p><?php echo $parrafo; ?></p>
-                                    <?php } ?>
+                                    <?php
+                                    $parrafos = explode("\n", $personaje['descripcion']);
+                                    foreach ($parrafos as $parrafo) {
+                                        if (trim($parrafo) != '') {
+                                    ?>
+                                            <p><?php echo htmlspecialchars($parrafo); ?></p>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
                                 </div>
                             </article>
                         <?php } ?>
