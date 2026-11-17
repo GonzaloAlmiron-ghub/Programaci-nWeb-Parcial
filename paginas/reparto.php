@@ -105,13 +105,13 @@ $grupos = array(
                         <label for="buscar">Nombre del personaje o del actor</label>
                         <input type="text" id="buscar" name="buscar"
                                value="<?php echo htmlspecialchars($busqueda); ?>"
-                               placeholder="Ejemplo: Marty o Jason Bateman">
+                               placeholder="Ejemplo: Marty">
                     </div>
 
                     <button type="submit">Buscar</button>
                 </form>
 
-                <p><a href="reparto.php">Ver todos los personajes</a></p>
+                <p><a class="enlace-volver" href="reparto.php">Ver todos los personajes</a></p>
 
                 <?php if (empty($personajesBD)) { ?>
                     <p>No se encontraron personajes.</p>

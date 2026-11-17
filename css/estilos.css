@@ -339,6 +339,18 @@ button:hover {
     background-color: #2c6658;
 }
 
+.enlace-volver {
+    display: inline-block;
+    margin-top: 24px;
+    color: #ffffff;
+}
+
+.enlace-volver:hover,
+.enlace-volver:focus-visible {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
 /* Footer */
 
 footer {
