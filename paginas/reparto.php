@@ -17,7 +17,7 @@ if ($busqueda == '') {
     $resultado = mysqli_query($conexion, $sql);
 } else {
     $sql = 'SELECT id, nombre, actor, imagen, alt, grupo, destacado, descripcion
-            FROM personajes WHERE nombre LIKE ? ORDER BY id';
+            FROM personajes WHERE nombre LIKE ? OR actor LIKE ? ORDER BY id';
 
     $consulta = mysqli_prepare($conexion, $sql);
 
@@ -25,8 +25,8 @@ if ($busqueda == '') {
         die('No se pudo preparar la búsqueda.');
     }
 
-    $nombreBuscado = '%' . $busqueda . '%';
-    mysqli_stmt_bind_param($consulta, 's', $nombreBuscado);
+    $textoBuscado = '%' . $busqueda . '%';
+    mysqli_stmt_bind_param($consulta, 'ss', $textoBuscado, $textoBuscado);
 
     if (!mysqli_stmt_execute($consulta)) {
         die('No se pudo realizar la búsqueda.');
@@ -102,10 +102,10 @@ $grupos = array(
 
                 <form action="reparto.php" method="get">
                     <div>
-                        <label for="buscar">Nombre del personaje</label>
+                        <label for="buscar">Nombre del personaje o del actor</label>
                         <input type="text" id="buscar" name="buscar"
                                value="<?php echo htmlspecialchars($busqueda); ?>"
-                               placeholder="Ejemplo: Marty">
+                               placeholder="Ejemplo: Marty o Jason Bateman">
                     </div>
 
                     <button type="submit">Buscar</button>
