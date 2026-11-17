@@ -4,21 +4,50 @@ $rutaBase = '../';
 
 require __DIR__ . '/../conexion.php';
 
-$sql = 'SELECT id, nombre, actor, imagen, alt, grupo, destacado, descripcion
-        FROM personajes ORDER BY id';
+$busqueda = '';
 
-$resultado = mysqli_query($conexion, $sql);
+if (isset($_GET['buscar']) && is_string($_GET['buscar'])) {
+    $busqueda = trim($_GET['buscar']);
+}
+
+if ($busqueda == '') {
+    $sql = 'SELECT id, nombre, actor, imagen, alt, grupo, destacado, descripcion
+            FROM personajes ORDER BY id';
+
+    $resultado = mysqli_query($conexion, $sql);
+} else {
+    $sql = 'SELECT id, nombre, actor, imagen, alt, grupo, destacado, descripcion
+            FROM personajes WHERE nombre LIKE ? ORDER BY id';
+
+    $consulta = mysqli_prepare($conexion, $sql);
+
+    if (!$consulta) {
+        die('No se pudo preparar la búsqueda.');
+    }
+
+    $nombreBuscado = '%' . $busqueda . '%';
+    mysqli_stmt_bind_param($consulta, 's', $nombreBuscado);
+
+    if (!mysqli_stmt_execute($consulta)) {
+        die('No se pudo realizar la búsqueda.');
+    }
+
+    $resultado = mysqli_stmt_get_result($consulta);
+    mysqli_stmt_close($consulta);
+}
 
 if (!$resultado) {
     die('No se pudieron consultar los personajes.');
 }
 
 $personajesBD = array();
+$gruposConResultados = array();
 
 $personaje = mysqli_fetch_assoc($resultado);
 
 while ($personaje != null) {
     $personajesBD[] = $personaje;
+    $gruposConResultados[$personaje['grupo']] = true;
 
     $personaje = mysqli_fetch_assoc($resultado);
 }
@@ -67,10 +96,33 @@ $grupos = array(
                 <figcaption>Los personajes de Ozark se relacionan por familia, poder, negocios y supervivencia.</figcaption>
             </figure>
         </section>
+        <section class="bloques-inicio">
+            <article class="tarjeta">
+                <h2>Buscar personajes</h2>
+
+                <form action="reparto.php" method="get">
+                    <div>
+                        <label for="buscar">Nombre del personaje</label>
+                        <input type="text" id="buscar" name="buscar"
+                               value="<?php echo htmlspecialchars($busqueda); ?>"
+                               placeholder="Ejemplo: Marty">
+                    </div>
+
+                    <button type="submit">Buscar</button>
+                </form>
+
+                <p><a href="reparto.php">Ver todos los personajes</a></p>
+
+                <?php if (empty($personajesBD)) { ?>
+                    <p>No se encontraron personajes.</p>
+                <?php } ?>
+            </article>
+        </section>
         
         <?php foreach ($grupos as $grupo => $nombreGrupo) { ?>
+            <?php if (isset($gruposConResultados[$grupo])) { ?>
             <section class="reparto">
-                <h2><?php echo $nombreGrupo; ?></h2>
+                <h2><?php echo htmlspecialchars($nombreGrupo); ?></h2>
 
                 <div class="foto-personaje">
                     <?php foreach ($personajesBD as $personaje) { ?>
@@ -104,6 +156,7 @@ $grupos = array(
                     <?php } ?>
                 </div>
             </section>
+            <?php } ?>
         <?php } ?>
 
         
