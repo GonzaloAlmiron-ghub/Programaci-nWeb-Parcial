@@ -1,4 +1,5 @@
 <?php
+session_start();
 $rutaBase = '../';
 
 $nombre = '';
@@ -58,6 +59,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     } elseif ($destacado !== '0' && $destacado !== '1') {
         $error = 'Seleccioná si el personaje es destacado.';
+    }
+
+        if ($error == '') {
+        require __DIR__ . '/../conexion.php';
+
+        $sql = 'INSERT INTO personajes
+                (nombre, actor, imagen, alt, grupo, destacado, descripcion)
+                VALUES (?, ?, ?, ?, ?, ?, ?)';
+
+        $consulta = mysqli_prepare($conexion, $sql);
+
+        if (!$consulta) {
+    $error = 'No se pudo preparar el guardado del personaje.';
+} else {
+    mysqli_stmt_bind_param(
+        $consulta,
+        'sssssis',
+        $nombre,
+        $actor,
+        $imagen,
+        $alt,
+        $grupo,
+        $destacado,
+        $descripcion
+    );
+
+    $guardado = mysqli_stmt_execute($consulta);
+mysqli_stmt_close($consulta);
+
+if ($guardado) {
+    $_SESSION['mensaje'] = 'Personaje agregado correctamente.';
+    header('Location: ../paginas/reparto.php');
+    exit;
+} else {
+    $error = 'No se pudo guardar el personaje.';
+}
+}
     }
 }
 ?>

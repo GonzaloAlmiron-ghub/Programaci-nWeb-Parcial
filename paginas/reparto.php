@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $rutaBase = '../';
 
@@ -76,6 +77,19 @@ $grupos = array(
     ?>
 
     <main>
+        <?php 
+        if (isset($_SESSION['mensaje'])) { 
+            ?>
+    <p role="status">
+        <?php 
+        echo htmlspecialchars($_SESSION['mensaje']); 
+        ?>
+    </p>
+    <?php unset($_SESSION['mensaje']); ?>
+<?php } 
+
+?>
+
         <section class="presentacion">
             <article class="texto-presentacion">
                 <h2>Reparto y personajes</h2>
