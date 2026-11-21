@@ -7,8 +7,21 @@ require __DIR__ . '/../conexion.php';
 
 $busqueda = '';
 
+
+$recordar = false;
+
 if (isset($_GET['buscar']) && is_string($_GET['buscar'])) {
     $busqueda = trim($_GET['buscar']);
+
+    if (isset($_GET['recordar']) && $_GET['recordar'] === '1' && $busqueda != '') {
+        setcookie('ultima_busqueda', $busqueda, time() + 60 * 60 * 24 * 30, '/');
+        $recordar = true;
+    } else {
+        setcookie('ultima_busqueda', '', time() - 3600, '/');
+    }
+} elseif (isset($_COOKIE['ultima_busqueda']) && is_string($_COOKIE['ultima_busqueda'])) {
+    $busqueda = trim($_COOKIE['ultima_busqueda']);
+    $recordar = ($busqueda != '');
 }
 
 if ($busqueda == '') {
@@ -122,10 +135,18 @@ $grupos = array(
                                placeholder="Ejemplo: Marty">
                     </div>
 
+                    <div>
+    <label for="recordar">
+        <input type="checkbox" id="recordar" name="recordar" value="1"
+       <?php if ($recordar) { echo 'checked'; } ?>>
+        Recordar búsqueda
+    </label>
+</div>
+
                     <button type="submit">Buscar</button>
                 </form>
 
-                <p><a class="enlace-volver" href="reparto.php">Ver todos los personajes</a></p>
+                <p><a class="enlace-volver" href="reparto.php?buscar=">Ver todos los personajes</a></p>
 
                 <?php if (empty($personajesBD)) { ?>
                     <p>No se encontraron personajes.</p>
