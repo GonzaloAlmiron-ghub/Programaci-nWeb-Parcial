@@ -149,6 +149,11 @@ $grupos = array(
 
                                 <div class="contenido-personaje">
                                     <h3><?php echo htmlspecialchars($personaje['nombre']); ?></h3>
+                                    <p>
+    <a href="../admin/editar-personaje.php?id=<?php echo (int) $personaje['id']; ?>">
+        Editar personaje
+    </a>
+</p>
 
                                     <?php if ($personaje['destacado']) { ?>
                                         <p class="texto-importante">Personaje destacado</p>
