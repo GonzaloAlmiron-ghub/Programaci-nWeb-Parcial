@@ -1,0 +1,5 @@
+Repo: https://github.com/GonzaloAlmiron-ghub/Programaci-nWeb-Parcial
+
+Infinity Free: https://almiron-gonzalo.ifree.page/
+
+Agregar personaje: https://almiron-gonzalo.ifree.page/proyecto/admin/alta-personaje.php
