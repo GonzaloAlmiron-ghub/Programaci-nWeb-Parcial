@@ -35,11 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $destacado = trim($_POST['destacado']);
     }
 
-        if (isset($_POST['descripcion']) && is_string($_POST['descripcion'])) {
+    if (isset($_POST['descripcion']) && is_string($_POST['descripcion'])) {
         $descripcion = trim($_POST['descripcion']);
     }
 
-        if (empty($nombre) || empty($actor) || empty($imagen) ||
+    if (empty($nombre) || empty($actor) || empty($imagen) ||
         empty($alt) || empty($descripcion)) {
         $error = 'Completá todos los campos para agregar el personaje.';
 
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error = 'Seleccioná si el personaje es destacado.';
     }
 
-        if ($error == '') {
+    if ($error == '') {
         require __DIR__ . '/../conexion.php';
 
         $sql = 'INSERT INTO personajes
@@ -71,31 +71,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $consulta = mysqli_prepare($conexion, $sql);
 
         if (!$consulta) {
-    $error = 'No se pudo preparar el guardado del personaje.';
-} else {
-    mysqli_stmt_bind_param(
-        $consulta,
-        'sssssis',
-        $nombre,
-        $actor,
-        $imagen,
-        $alt,
-        $grupo,
-        $destacado,
-        $descripcion
-    );
+            $error = 'No se pudo preparar el guardado del personaje.';
+        } else {
+            mysqli_stmt_bind_param(
+                $consulta,
+                'sssssis',
+                $nombre,
+                $actor,
+                $imagen,
+                $alt,
+                $grupo,
+                $destacado,
+                $descripcion
+            );
 
-    $guardado = mysqli_stmt_execute($consulta);
-mysqli_stmt_close($consulta);
+            $guardado = mysqli_stmt_execute($consulta);
+            mysqli_stmt_close($consulta);
 
-if ($guardado) {
-    $_SESSION['mensaje'] = 'Personaje agregado correctamente.';
-    header('Location: ../paginas/reparto.php');
-    exit;
-} else {
-    $error = 'No se pudo guardar el personaje.';
-}
-}
+            if ($guardado) {
+                $_SESSION['mensaje'] = 'Personaje agregado correctamente.';
+                header('Location: ../paginas/reparto.php');
+                exit;
+            } else {
+                $error = 'No se pudo guardar el personaje.';
+            }
+        }
     }
 }
 ?>
