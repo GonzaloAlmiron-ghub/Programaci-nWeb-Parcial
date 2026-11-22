@@ -6,5 +6,6 @@
                 <li><a href="<?php echo $rutaBase; ?>paginas/temporadas.php">Temporadas</a></li>
                 <li><a href="<?php echo $rutaBase; ?>paginas/curiosidades.php">Curiosidades</a></li>
                 <li><a href="<?php echo $rutaBase; ?>paginas/contacto.php">Contacto</a></li>
+
             </ul>
         </nav>

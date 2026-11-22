@@ -152,12 +152,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
 
-<header class="encabezado">
-        <h1>
-            <span class="marca-ozark">PANEL DE ADMINISTRADOR</span>
-            
-        </h1>
-</header>
+
+       <?php require __DIR__ . '/../componentes/header-admin.php'; ?>
+
     <main>
         <section class="bloques-inicio">
             <article class="tarjeta">
